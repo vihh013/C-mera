@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+<link rel="stylesheet" href="components/estilo.css">
+<script src="components/script.js"></script>
+
+
+ 
+
+    function capturarFoto() {
+      var options = {
+        quality: 50,
+        destinationType: Camera.DestinationType.FILE_URI,
+        sourceType: Camera.PictureSourceType.CAMERA,
+        encodingType: Camera.EncodingType.JPEG,
+        saveToPhotoAlbum: true
+      };
+      navigator.camera.getPicture(onFotoCapturada, onErroCapturaFoto, options);
+    }
+    }
+
+ 
+
+    function onDeviceReady() {
+      console.log("Dispositivo pronto.");
+    }
+
+ 
+
+ 
+
+    function onFotoCapturada(imageURI) {
+      console.log("Imagem capturada: " + imageURI);
+    }
+
+ 
+
+    function onErroCapturaFoto(error) {
+      console.error("Erro ao capturar a imagem: " + error);
+    }
+</script>
+</head>
+
+ 
+
+<body>
+<button id="btnCapturarFoto">Capturar Foto</button>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById("btnCapturarFoto").addEventListener("click", capturarFoto);
+      document.addEventListener("deviceready", onDeviceReady, false);
+    });
+
+ 
+</body>
+
+ 
+
+</html>
